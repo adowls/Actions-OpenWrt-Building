@@ -18,4 +18,4 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 # cp r8500.target.linux.bcm53xx.image.Makefile
-cp r8500.target.linux.bcm53xx.image.Makefile target/linux/bcm53xx/image/Makefile
+cp ../r8500.target.linux.bcm53xx.image.Makefile target/linux/bcm53xx/image/Makefile
