@@ -19,7 +19,7 @@
 # Modify hostname
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
 
-wget http://downloads.openwrt.org/releases/24.10.4/targets/bcm53xx/generic/config.buildinfo -O .config
+# wget http://downloads.openwrt.org/releases/24.10.4/targets/bcm53xx/generic/config.buildinfo -O .config
 sed -i '/.*bcm53xx_generic_DEVICE/d' .config
 sed -i 's/CONFIG_TARGET_MULTI_PROFILE=y/# CONFIG_TARGET_MULTI_PROFILE is not set/' .config
 sed -i 's/CONFIG_TARGET_ALL_PROFILES=y/# CONFIG_TARGET_ALL_PROFILES is not set/' .config
