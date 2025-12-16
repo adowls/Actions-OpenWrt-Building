@@ -1,0 +1,29 @@
+name: OpenWrt Builder ssh
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+env:
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: main
+  REPO_TAG: 24.10.4
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: .config
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
+  UPLOAD_BIN_DIR: false
+  UPLOAD_FIRMWARE: true
+  UPLOAD_RELEASE: true
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+
+      - name: SSH connection to Actions
+            uses: P3TERX/debugger-action@main
+            uses: P3TERX/ssh2actions@v1.0.0
+            if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
