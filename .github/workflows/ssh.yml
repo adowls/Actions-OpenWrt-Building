@@ -25,11 +25,13 @@ jobs:
     steps:
 
     - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+      #uses: P3TERX/ssh2actions@v1.0.0
+      #if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
     - name: Upload firmware to release
       uses: softprops/action-gh-release@v2
+      run: echo ${{ github.sha }} > Release.txt
+      if: github.ref_type == 'tag'
       #if: steps.tag.outputs.status == 'success' && !cancelled()
       # env:
       #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -37,6 +39,5 @@ jobs:
         #tag_name: ${{ steps.tag.outputs.release_tag }}
         #body_path: release.txt
         #files: ${{ env.FIRMWARE }}/*
-        run: echo ${{ github.sha }} > Release.txt
         files: Release.txt
           
